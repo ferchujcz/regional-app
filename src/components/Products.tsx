@@ -49,9 +49,9 @@ export default function Products() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-20"
         >
           <span className="font-sans text-sm tracking-[0.3em] uppercase text-oro font-semibold ornament block mb-4">
@@ -74,9 +74,9 @@ export default function Products() {
             <div key={idx}>
               {/* Category header */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 className="mb-12 flex flex-col md:flex-row md:items-end gap-4"
               >
                 <div>
@@ -94,9 +94,9 @@ export default function Products() {
                 {section.items.map((item, itemIdx) => (
                   <motion.div
                     key={item.id}
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.5, delay: itemIdx * 0.1 }}
                     className="group relative overflow-hidden rounded-sm bg-verde-claro/20 border border-crema/10 hover:border-oro/40 transition-all duration-500"
                   >
@@ -129,7 +129,7 @@ export default function Products() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mt-20"
         >
           <a

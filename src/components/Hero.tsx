@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
+import Alfajor3D from "./Alfajor3D";
+
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -15,8 +17,8 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
   
-  const floatingY = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
-  const floatingRotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
+  const floatingY = useTransform(scrollYProgress, [0, 1], ["0%", "-150%"]);
+  const floatingRotate = useTransform(scrollYProgress, [0, 1], [0, 180]);
 
   return (
     <section
@@ -72,12 +74,12 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Floating 3D Placeholder for Alfajor */}
+      {/* Floating 3D Alfajor */}
       <motion.div
         style={{ y: floatingY, rotate: floatingRotate }}
-        className="absolute bottom-10 right-10 md:bottom-32 md:right-32 z-20 w-32 h-32 md:w-48 md:h-48 rounded-full bg-gradient-to-tr from-marron to-oro shadow-2xl shadow-oro/20 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-300"
+        className="absolute bottom-10 right-10 md:bottom-32 md:right-32 z-20 w-48 h-48 md:w-72 md:h-72 cursor-pointer hover:scale-110 transition-transform duration-300"
       >
-        <span className="text-crema font-bold font-sans text-xs uppercase tracking-widest opacity-80 rotate-[-15deg]">Alfajor 3D</span>
+        <Alfajor3D />
       </motion.div>
       
       {/* Scroll indicator */}

@@ -4,11 +4,8 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 
 const reels = [
-  { id: 1, title: "Proceso de Elaboración" },
-  { id: 2, title: "El Secreto de la Yerba Mate" },
-  { id: 3, title: "Un Viaje a Misiones" },
-  { id: 4, title: "El Bocado Perfecto" },
-  { id: 5, title: "Desde la Tierra Colorada" },
+  { id: 1, title: "Proceso de Elaboración", video: "/img_alf/presentacion.mp4" },
+  { id: 2, title: "El Secreto de la Yerba Mate", video: "/img_alf/reel.mp4" },
 ];
 
 export default function ReelsCarousel() {
@@ -34,9 +31,9 @@ export default function ReelsCarousel() {
           {reels.map((reel, index) => (
             <motion.div
               key={reel.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.02, rotateY: 0 }}
               className="relative shrink-0 w-[70vw] sm:w-[300px] aspect-[9/16] rounded-3xl snap-center group cursor-pointer perspective-1000"
@@ -44,21 +41,27 @@ export default function ReelsCarousel() {
                 transformStyle: "preserve-3d",
               }}
             >
-              {/* Tilted effect on PC (simulated via CSS classes if needed, here we use Framer motion whileHover for straighting) */}
               <div className="absolute inset-0 bg-marron rounded-3xl overflow-hidden shadow-2xl transition-transform duration-500 md:-rotate-y-12 group-hover:rotate-y-0 group-hover:shadow-[0_20px_50px_rgba(201,168,76,0.3)]">
-                {/* Placeholder for video */}
-                <div className="w-full h-full bg-gradient-to-br from-verde to-verde-claro animate-pulse relative">
+                <div className="w-full h-full bg-black relative">
+                  <video 
+                    src={reel.video} 
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
                   
                   {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform duration-300">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-16 h-16 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center border border-white/20 scale-90 group-hover:scale-100 transition-transform duration-300">
                       <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
                     </div>
                   </div>
                   
                   {/* Title Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                     <p className="font-sans text-white font-medium text-lg leading-tight">
                       {reel.title}
                     </p>
