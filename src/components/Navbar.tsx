@@ -16,11 +16,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Inicio", href: "#hero" },
-    { name: "Productos", href: "#productos" },
-    { name: "Nosotros", href: "#nosotros" },
-    { name: "Galería", href: "#galeria" },
-    { name: "Contacto", href: "#contacto" },
+    { name: "Inicio", href: "/#hero" },
+    { name: "Productos", href: "/#productos" },
+    { name: "Nosotros", href: "/#nosotros" },
+    { name: "Galería", href: "/#galeria" },
+    { name: "Preguntas", href: "/#preguntas" },
+    { name: "Contacto", href: "/#contacto" },
   ];
 
   return (
@@ -40,7 +41,7 @@ export default function Navbar() {
           <Link href="/" className="flex-shrink-0 relative group">
             <motion.img
               src="/img_alf/logoalf.png"
-              alt="Regional"
+              alt="Regional — Alfajores artesanales de Oberá, Misiones"
               className={`transition-all duration-500 object-contain ${
                 scrolled ? "h-12" : "h-16 md:h-20"
               }`}
@@ -49,7 +50,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}

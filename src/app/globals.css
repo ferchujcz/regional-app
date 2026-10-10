@@ -35,6 +35,24 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display), 'Georgia', serif;
 }
 
+/* Offset anchor jumps so the fixed navbar doesn't cover section titles */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Elegant scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

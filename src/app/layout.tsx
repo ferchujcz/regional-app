@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter, Caveat } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import JsonLd from "@/components/JsonLd";
+import { BUSINESS, DEFAULT_DESCRIPTION, PRIMARY_KEYWORDS, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -19,38 +21,78 @@ const caveat = Caveat({
   subsets: ["latin"],
 });
 
+const DEFAULT_TITLE = "Alfajores Artesanales en Oberá, Misiones | Regional Alfajores";
+
+export const viewport: Viewport = {
+  themeColor: "#5A0C0E",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Regional | Alfajores Artesanales de Oberá, Misiones",
-  description:
-    "Alfajores premium de fécula de mandioca y yerba mate, mermelada de rosella y miel pura. Sabores auténticos desde Oberá, Misiones, Argentina.",
-  keywords: [
-    "alfajores artesanales",
-    "fécula de mandioca",
-    "yerba mate",
-    "Oberá",
-    "Misiones",
-    "Argentina",
-    "productos regionales",
-    "mermelada de rosella",
-    "miel pura",
-    "Regional",
-  ],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: "%s | Regional Alfajores Oberá",
+  },
+  description: DEFAULT_DESCRIPTION,
+  keywords: PRIMARY_KEYWORDS,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "food",
+  alternates: {
+    canonical: "/",
+    languages: { "es-AR": "/" },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: BUSINESS.logo,
+    apple: BUSINESS.logo,
+  },
   openGraph: {
-    title: "Regional | Alfajores Artesanales de Oberá, Misiones",
+    title: DEFAULT_TITLE,
     description:
-      "Sabores auténticos desde la tierra colorada. Alfajores artesanales premium, mermelada de rosella y miel pura.",
-    url: "https://regionalalfajores.com.ar",
-    siteName: "Regional",
+      "Alfajor artesanal de Oberá, Misiones: fécula de mandioca, yerba mate, dulce de leche y miel pura. Sabores auténticos de la tierra colorada con envíos a toda Argentina.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
-        url: "/img_alf/caja.jpg",
+        url: BUSINESS.image,
         width: 1200,
         height: 630,
-        alt: "Regional — Alfajores Premium de Misiones",
+        alt: "Caja de alfajores artesanales Regional de Oberá, Misiones",
       },
     ],
     locale: "es_AR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [BUSINESS.image],
+  },
+  other: {
+    // Local / geographic SEO signals
+    "geo.region": BUSINESS.regionCode,
+    "geo.placename": `${BUSINESS.city}, ${BUSINESS.region}, ${BUSINESS.countryName}`,
+    "geo.position": `${BUSINESS.lat};${BUSINESS.lng}`,
+    ICBM: `${BUSINESS.lat}, ${BUSINESS.lng}`,
+    "content-language": "es-AR",
+    distribution: "global",
+    coverage: "Argentina",
   },
 };
 
@@ -60,9 +102,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="es-AR" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/img_alf/logoalf.png" />
+        <JsonLd />
       </head>
       <body
         suppressHydrationWarning
