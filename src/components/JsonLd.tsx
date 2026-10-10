@@ -1,4 +1,4 @@
-import { BUSINESS, DEFAULT_DESCRIPTION, FAQS, SERVICE_AREAS, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { BUSINESS, DEFAULT_DESCRIPTION, MAP_LINK, SERVICE_AREAS, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 /**
  * Structured data (schema.org JSON-LD) for local SEO and GEO
@@ -35,6 +35,7 @@ export default function JsonLd() {
       servesCuisine: ["Alfajores", "Repostería artesanal", "Productos regionales"],
       address: {
         "@type": "PostalAddress",
+        streetAddress: BUSINESS.street,
         addressLocality: BUSINESS.city,
         addressRegion: BUSINESS.region,
         postalCode: BUSINESS.postalCode,
@@ -45,7 +46,11 @@ export default function JsonLd() {
         latitude: BUSINESS.lat,
         longitude: BUSINESS.lng,
       },
-      hasMap: `https://www.google.com/maps?q=${BUSINESS.lat},${BUSINESS.lng}`,
+      hasMap: MAP_LINK,
+      identifier: [
+        { "@type": "PropertyValue", name: "RNE", value: BUSINESS.rne },
+        { "@type": "PropertyValue", name: "Marca INPI", value: BUSINESS.marcaInpi },
+      ],
       areaServed: SERVICE_AREAS.map((name) => ({ "@type": "Place", name })),
       openingHoursSpecification: [
         {
@@ -91,9 +96,12 @@ export default function JsonLd() {
     {
       "@type": "Product",
       "@id": `${SITE_URL}/#alfajor`,
-      name: "Alfajor artesanal de Oberá, Misiones",
+      name: "Alfajor de yerba mate, miel y fécula de mandioca — Libre de gluten",
+      alternateName: "Delicias con yerba mate, miel y fécula de mandioca",
       description:
-        "Alfajor artesanal misionero de fécula de mandioca con dulce de leche, toque de yerba mate y miel pura. Elaborado en Oberá, Misiones, Argentina.",
+        "Alfajor artesanal de yerba mate relleno con dulce de leche y miel, cubierto con merengue italiano. Libre de gluten (RNPA 14267117). Elaborado en Oberá, Misiones, Argentina.",
+      identifier: { "@type": "PropertyValue", name: "RNPA", value: BUSINESS.rnpa },
+      additionalProperty: { "@type": "PropertyValue", name: "Libre de gluten", value: "Sí" },
       image: `${SITE_URL}/img_alf/alf2.jpg`,
       brand: { "@type": "Brand", name: "Regional" },
       manufacturer: { "@id": businessId },
@@ -107,15 +115,6 @@ export default function JsonLd() {
         seller: { "@id": businessId },
         areaServed: "AR",
       },
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${SITE_URL}/#faq`,
-      mainEntity: FAQS.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
     },
   ];
 

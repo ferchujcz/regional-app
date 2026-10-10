@@ -8,8 +8,19 @@ import { FAQS } from "@/lib/seo";
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <section id="preguntas" className="py-24 md:py-32 bg-crema relative" aria-labelledby="faq-title">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-14">
           <span className="font-sans text-sm tracking-[0.3em] uppercase text-verde font-semibold ornament block mb-4">

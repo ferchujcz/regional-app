@@ -42,9 +42,14 @@ export default function Storytelling() {
         <h2 className="text-4xl md:text-6xl font-display font-bold text-vino-deep mb-4">
           Nuestra Esencia
         </h2>
-        <p className="text-lg md:text-xl font-sans text-marron/80 max-w-2xl">
+        <p className="text-lg md:text-xl font-sans text-marron/80 max-w-2xl mb-4">
           Cada bocado es un viaje a Misiones. Seleccionamos cuidadosamente los tesoros de nuestra tierra para crear una experiencia única.
         </p>
+        {/* Scroll hint for mobile */}
+        <div className="flex items-center gap-2 text-vino/60 md:hidden animate-pulse">
+          <span className="font-sans text-xs uppercase tracking-widest font-semibold">Deslizar para ver más</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
       </div>
 
       <div className="relative w-full pb-10">

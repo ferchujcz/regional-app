@@ -16,12 +16,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Inicio", href: "/#hero" },
-    { name: "Productos", href: "/#productos" },
-    { name: "Nosotros", href: "/#nosotros" },
-    { name: "Galería", href: "/#galeria" },
-    { name: "Preguntas", href: "/#preguntas" },
-    { name: "Contacto", href: "/#contacto" },
+    { name: "Inicio", href: "/" },
+    { name: "Productos", href: "/productos" },
+    { name: "Nosotros", href: "/nosotros" },
+    { name: "Galería", href: "/galeria" },
+    { name: "Contacto", href: "/contacto" },
   ];
 
   return (

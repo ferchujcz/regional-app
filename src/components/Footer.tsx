@@ -3,12 +3,11 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import { BUSINESS } from "@/lib/seo";
 
 const nav = [
-  { name: "Nosotros", href: "/#nosotros" },
-  { name: "Productos", href: "/#productos" },
-  { name: "Galería", href: "/#galeria" },
-  { name: "Preguntas frecuentes", href: "/#preguntas" },
-  { name: "Contacto", href: "/#contacto" },
+  { name: "Nosotros", href: "/nosotros" },
+  { name: "Productos", href: "/productos" },
+  { name: "Galería", href: "/galeria" },
   { name: "Calidad", href: "/calidad" },
+  { name: "Contacto", href: "/contacto" },
 ];
 
 const local = [

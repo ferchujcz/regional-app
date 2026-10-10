@@ -57,8 +57,8 @@ export default function About() {
                   <span className="font-sans text-xs uppercase tracking-widest text-verde font-semibold">Conservantes</span>
                 </div>
                 <div>
-                  <span className="font-display text-4xl text-vino block">Local</span>
-                  <span className="font-sans text-xs uppercase tracking-widest text-verde font-semibold">Ingredientes</span>
+                  <span className="font-display text-4xl text-vino block">100%</span>
+                  <span className="font-sans text-xs uppercase tracking-widest text-verde font-semibold">Misioneros</span>
                 </div>
               </div>
             </motion.div>

@@ -1,14 +1,10 @@
 "use client";
 
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
-import { useRef, useState } from "react";
-import dynamic from "next/dynamic";
-
-const Alfajor3D = dynamic(() => import("./Alfajor3D"), { ssr: false });
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollVal, setScrollVal] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -18,10 +14,6 @@ export default function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-  const floatingY = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
-
-  // Track scroll value for the 3D model
-  useMotionValueEvent(scrollYProgress, "change", (v) => setScrollVal(v));
 
   return (
     <section
@@ -72,7 +64,7 @@ export default function Hero() {
            className="mt-12 text-center"
         >
           <a
-            href="#productos"
+            href="/productos"
             className="group relative px-8 py-4 bg-transparent overflow-hidden rounded-full border border-oro/50 transition-all hover:border-oro inline-block"
           >
             <span className="relative z-10 text-oro font-sans uppercase tracking-widest text-sm font-semibold transition-colors group-hover:text-vino-deep">
@@ -82,14 +74,6 @@ export default function Hero() {
           </a>
         </motion.div>
       </div>
-
-      {/* Floating 3D Alfajor — smaller, no box */}
-      <motion.div
-        style={{ y: floatingY }}
-        className="absolute bottom-16 right-4 md:bottom-24 md:right-24 z-20 w-32 h-32 md:w-44 md:h-44"
-      >
-        <Alfajor3D scrollProgress={scrollVal} />
-      </motion.div>
       
       {/* Scroll indicator */}
       <motion.div 
