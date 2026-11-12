@@ -87,11 +87,14 @@ export default function About() {
                 transition={{ delay: 0.5 }}
                 className="absolute -bottom-8 -left-8 bg-verde text-crema p-8 rounded-sm shadow-2xl max-w-[250px] hidden md:block"
               >
-                <img
-                  src="/img_alf/logoalf.png"
-                  alt="Regional"
-                  className="h-10 w-auto mb-3 brightness-200"
-                />
+                <div className="inline-block bg-crema px-3 py-1 rounded-full mb-3">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/img_alf/logoalf.png"
+                    alt="Regional"
+                    className="h-8 w-auto object-contain"
+                  />
+                </div>
                 <p className="font-sans text-sm text-crema/80 leading-relaxed">
                   Cada alfajor es elaborado a mano en nuestro taller de Oberá.
                 </p>

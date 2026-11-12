@@ -42,11 +42,14 @@ export default function Contact() {
             className="lg:col-span-2 flex flex-col gap-8"
           >
             <div className="bg-verde text-crema p-8 rounded-sm shadow-lg">
-              <img
-                src="/img_alf/logoalf.png"
-                alt="Regional"
-                className="h-14 w-auto mb-6 brightness-200"
-              />
+              <div className="inline-block bg-crema px-4 py-1.5 rounded-full mb-6 shadow-sm">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/img_alf/logoalf.png"
+                  alt="Regional"
+                  className="h-11 w-auto object-contain"
+                />
+              </div>
               <div className="space-y-6">
                 <a
                   href="tel:+5493755297547"

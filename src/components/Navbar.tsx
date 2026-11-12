@@ -38,14 +38,23 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 relative group">
-            <motion.img
-              src="/img_alf/logoalf.png"
-              alt="Regional — Alfajores artesanales de Oberá, Misiones"
-              className={`transition-all duration-500 object-contain ${
-                scrolled ? "h-12" : "h-16 md:h-20"
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              className={`transition-all duration-500 flex items-center justify-center rounded-full ${
+                scrolled
+                  ? "bg-transparent px-0 py-0"
+                  : "bg-crema/95 px-4 py-1.5 shadow-lg border border-oro/40 backdrop-blur-sm"
               }`}
-              whileHover={{ scale: 1.05 }}
-            />
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/img_alf/logoalf.png"
+                alt="Regional — Alfajores artesanales de Oberá, Misiones"
+                className={`transition-all duration-500 object-contain ${
+                  scrolled ? "h-11 md:h-12" : "h-11 md:h-14"
+                }`}
+              />
+            </motion.div>
           </Link>
 
           {/* Desktop Nav */}

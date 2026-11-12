@@ -1,89 +1,128 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Wheat, Leaf, Droplets, Cookie, Sparkles } from "lucide-react";
 
-const ingredients = [
+const layers = [
   {
+    step: "01",
+    role: "La Masa",
     title: "Fécula de Mandioca",
-    desc: "La base de nuestra textura inconfundible, suave y libre de gluten por naturaleza. Directo de la tierra colorada.",
-    color: "bg-crema-dark",
-    textColor: "text-marron",
+    origin: "Chacras de Misiones",
+    desc: "La base de nuestra textura inconfundible: liviana, suave y libre de gluten por naturaleza. Amasada en pequeñas tandas para lograr que cada bocado se deshaga suavemente.",
+    tasting: "Suavidad aérea · Sin TACC",
+    Icon: Wheat,
   },
   {
+    step: "02",
+    role: "El Carácter",
     title: "Yerba Mate",
-    desc: "El alma de Misiones. Un toque sutil que despierta los sentidos y equilibra la dulzura.",
-    color: "bg-verde",
-    textColor: "text-crema",
+    origin: "Zona Centro · Oberá",
+    desc: "El alma de Misiones infusionada en nuestras tapas. Un toque herbal sutil y noble que despierta los sentidos y equilibra la dulzura del relleno.",
+    tasting: "Notas herbales · Identidad local",
+    Icon: Leaf,
   },
   {
-    title: "Miel Pura",
-    desc: "El oro líquido de nuestros montes, aportando un brillo y sabor natural inigualable.",
-    color: "bg-oro",
-    textColor: "text-marron",
+    step: "03",
+    role: "El Aroma",
+    title: "Miel Pura de Monte",
+    origin: "Apiarios Misioneros",
+    desc: "El oro líquido de nuestros montes nativos. Aporta humedad natural a la masa, brillo propio y un perfume floral imposible de replicar con azúcares refinados.",
+    tasting: "Dulzor floral · 100% Natural",
+    Icon: Droplets,
   },
   {
+    step: "04",
+    role: "El Corazón",
     title: "Dulce de Leche",
-    desc: "El corazón cremoso. Abundante, intenso y perfectamente equilibrado.",
-    color: "bg-marron",
-    textColor: "text-crema",
+    origin: "Tradición Argentina",
+    desc: "Un centro generoso, cremoso e intenso que une las tapas de mandioca y yerba mate en un equilibrio perfecto de textura y sabor.",
+    tasting: "Cremosidad intensa · Relleno abundante",
+    Icon: Cookie,
   },
   {
-    title: "Merengue",
-    desc: "La corona perfecta. Un baño crujiente por fuera y que se deshace en la boca.",
-    color: "bg-blanco",
-    textColor: "text-vino-deep",
+    step: "05",
+    role: "La Corona",
+    title: "Merengue Italiano",
+    origin: "Terminación Artesanal",
+    desc: "El baño clásico que sella nuestra receta: una fina capa blanca, crujiente por fuera y tierna por dentro, aplicada cuidando cada detalle en nuestro taller.",
+    tasting: "Corteza crujiente · Sello artesanal",
+    Icon: Sparkles,
   },
 ];
 
 export default function Storytelling() {
   return (
-    <section className="relative py-24 bg-crema overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 mb-12">
-        <h2 className="text-4xl md:text-6xl font-display font-bold text-vino-deep mb-4">
-          Nuestra Esencia
-        </h2>
-        <p className="text-lg md:text-xl font-sans text-marron/80 max-w-2xl mb-4">
-          Cada bocado es un viaje a Misiones. Seleccionamos cuidadosamente los tesoros de nuestra tierra para crear una experiencia única.
-        </p>
-        {/* Scroll hint for mobile */}
-        <div className="flex items-center gap-2 text-vino/60 md:hidden animate-pulse">
-          <span className="font-sans text-xs uppercase tracking-widest font-semibold">Deslizar para ver más</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <section className="relative py-24 md:py-32 bg-crema-dark overflow-hidden grain">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="max-w-3xl mb-20">
+          <span className="font-sans text-xs md:text-sm tracking-[0.3em] uppercase text-verde font-semibold block mb-4">
+            Anatomía de Nuestro Alfajor
+          </span>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-vino-deep mb-6 leading-tight">
+            Nuestra <span className="italic text-verde font-normal">Esencia</span>, capa por capa
+          </h2>
+          <p className="text-lg md:text-xl font-sans text-marron/80 leading-relaxed">
+            Cada bocado es un viaje a Misiones. En lugar de fórmulas industriales, combinamos cinco elementos nobles de nuestra tierra para crear una experiencia única desde el primer corte.
+          </p>
         </div>
-      </div>
 
-      <div className="relative w-full pb-10">
-        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-4 md:px-8 pb-10 hide-scrollbar" style={{ scrollPaddingLeft: "1rem" }}>
-          {ingredients.map((ing, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`w-[85vw] md:w-[450px] aspect-[4/5] md:aspect-square rounded-[2rem] p-8 md:p-10 flex flex-col justify-between shrink-0 relative overflow-hidden group snap-center cursor-pointer ${ing.color} shadow-lg hover:shadow-2xl transition-all duration-500`}
-            >
-              <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500">
-                <span className={`font-sans font-bold tracking-widest uppercase text-xs md:text-sm ${ing.textColor} opacity-60 mb-2 block`}>
-                  Ingrediente {i + 1}
-                </span>
-                <h3 className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold ${ing.textColor}`}>
-                  {ing.title}
-                </h3>
-              </div>
-              
-              <div className="relative z-10 transform group-hover:-translate-y-2 transition-transform duration-500 delay-75">
-                <p className={`font-sans text-base md:text-lg ${ing.textColor} leading-relaxed opacity-90`}>
-                  {ing.desc}
-                </p>
-              </div>
+        {/* Architectural / Timeline Anatomy — No empty square cards */}
+        <div className="relative">
+          {/* Vertical connecting line on desktop */}
+          <div className="hidden lg:block absolute left-[240px] top-6 bottom-6 w-[1px] bg-gradient-to-b from-vino/30 via-oro to-verde/30" />
 
-              {/* Decorative element */}
-              <div className={`absolute -bottom-20 -right-20 w-48 h-48 md:w-64 md:h-64 rounded-full opacity-10 blur-3xl ${ing.textColor === 'text-crema' ? 'bg-crema' : 'bg-vino-deep'}`} />
-            </motion.div>
-          ))}
+          <div className="space-y-12 lg:space-y-0">
+            {layers.map((layer, i) => (
+              <motion.div
+                key={layer.step}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start lg:py-10 border-b border-marron/10 last:border-b-0 group"
+              >
+                {/* Step & Role (Left of timeline) */}
+                <div className="lg:col-span-3 flex lg:flex-col justify-between lg:justify-start items-center lg:items-start lg:pr-8">
+                  <div className="flex items-center gap-3">
+                    <span className="font-display text-3xl md:text-4xl font-bold text-vino/80 group-hover:text-vino transition-colors">
+                      {layer.step}
+                    </span>
+                    <span className="font-sans text-xs uppercase tracking-[0.25em] font-bold text-verde bg-crema px-3 py-1 rounded-full border border-marron/10">
+                      {layer.role}
+                    </span>
+                  </div>
+                  <span className="font-sans text-xs text-marron/60 uppercase tracking-widest mt-0 lg:mt-3">
+                    {layer.origin}
+                  </span>
+                </div>
+
+                {/* Timeline Node Icon + Title & Description */}
+                <div className="lg:col-span-6 flex items-start gap-5">
+                  <div className="w-12 h-12 rounded-full bg-crema border-2 border-oro text-vino-deep flex items-center justify-center shrink-0 shadow-md group-hover:bg-vino group-hover:text-crema group-hover:border-vino transition-all duration-300 relative z-10">
+                    <layer.Icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-display font-bold text-vino-deep mb-2 group-hover:text-verde transition-colors">
+                      {layer.title}
+                    </h3>
+                    <p className="font-sans text-base md:text-lg text-marron/80 leading-relaxed">
+                      {layer.desc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Sensory note pill (Right column) */}
+                <div className="lg:col-span-3 lg: flex lg:justify-end items-center self-center pl-17 lg:pl-0">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-crema/70 border border-marron/10 text-xs font-sans font-semibold uppercase tracking-wider text-verde">
+                    <span className="w-2 h-2 rounded-full bg-oro" />
+                    <span>{layer.tasting}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

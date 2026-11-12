@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -40,34 +40,46 @@ export default function Testimonials() {
           <div className="w-24 h-[1px] bg-oro mx-auto" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Open Editorial Quotes with Dividers instead of white boxes */}
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-marron/15 border-t border-b border-marron/15">
           {testimonials.map((t, i) => (
-            <motion.div
+            <motion.blockquote
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="bg-blanco p-8 rounded-sm shadow-sm border border-crema-dark hover:shadow-xl hover:border-oro/30 transition-all duration-500 flex flex-col"
+              className={`py-10 md:py-12 flex flex-col justify-between ${
+                i === 0 ? "md:pr-10" : i === 1 ? "md:px-10" : "md:pl-10"
+              }`}
             >
-              {/* Stars */}
-              <div className="flex gap-1 mb-6 text-oro">
-                {[...Array(t.stars)].map((_, idx) => (
-                  <Star key={idx} fill="currentColor" size={18} />
-                ))}
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex gap-1 text-oro">
+                    {[...Array(t.stars)].map((_, idx) => (
+                      <Star key={idx} fill="currentColor" size={16} />
+                    ))}
+                  </div>
+                  <Quote className="w-6 h-6 text-vino/20" />
+                </div>
+
+                <p className="font-display text-lg md:text-xl text-marron/90 leading-relaxed mb-8 italic">
+                  &ldquo;{t.text}&rdquo;
+                </p>
               </div>
 
-              {/* Quote */}
-              <p className="font-sans text-marron/80 leading-relaxed mb-8 flex-1 italic">
-                &ldquo;{t.text}&rdquo;
-              </p>
-
-              {/* Author */}
-              <div className="border-t border-crema-dark pt-4">
-                <p className="font-display text-lg text-vino">{t.name}</p>
-                <p className="font-sans text-sm text-verde">{t.location}</p>
-              </div>
-            </motion.div>
+              <footer className="flex items-center gap-3 pt-4 border-t border-marron/10">
+                <div className="w-2 h-8 bg-vino rounded-full" />
+                <div>
+                  <p className="font-display text-lg text-vino font-bold leading-none">
+                    {t.name}
+                  </p>
+                  <p className="font-sans text-xs uppercase tracking-widest text-verde mt-1">
+                    {t.location}
+                  </p>
+                </div>
+              </footer>
+            </motion.blockquote>
           ))}
         </div>
       </div>
